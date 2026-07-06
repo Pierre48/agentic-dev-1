@@ -37,3 +37,7 @@ jobs:
           # --- Issue Code Proposal Automation ---
           # This instructs the agent to automatically run when an issue opens
           github_action_config.auto_improve_by_issue: "true"
+
+          # Maps the runtime command when an Issue opens instead of a PR
+          # PR-Agent can look at an issue if explicitly called with /generate_labels or basic commands
+          CUSTOM_COMMAND: ${{ github.event_name == 'issues' && '/review' || '' }}
